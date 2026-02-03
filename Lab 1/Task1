@@ -1,0 +1,22 @@
+class Vehicle:
+    def __init__(user, vehicle_id, brand, rentperday):
+        user.vehicle_id = vehicle_id
+        user.brand = brand
+        user.rentperday = rentperday
+
+    def display_details(user):
+        print("ID:", user.vehicle_id)
+        print("Brand:", user.brand)
+        print("Rent per day:", user.rentperday)
+
+    def calculate_rent(user, days):
+        rent = days * user.rentperday
+        return rent
+
+car1 = Vehicle(1, "Toyota", 40)
+car2 = Vehicle(2, "Lamborghini", 30)
+car1.display_details()
+print("Total Rent:", car1.calculate_rent(4))
+print()
+car2.display_details()
+print("Total Rent:", car2.calculate_rent(2))
