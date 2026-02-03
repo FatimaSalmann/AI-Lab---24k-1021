@@ -1,0 +1,33 @@
+class Employee:
+    def input(user, name, id):
+        user.name = name
+        user.id = id
+
+    def calculate_salary(user):
+        return 0
+
+class FullTimeEmployee(Employee):
+    def input(user, name, id, salary):
+        Employee.input(user, name, id)
+        user.salary = salary
+
+    def calculate_salary(user):
+        return user.salary
+
+class PartTimeEmployee(Employee):
+    def input(user, name, id, hours, rate):
+        Employee.input(user, name, id)
+        user.hours = hours
+        user.rate = rate
+
+    def calculate_salary(user):
+        return user.hours * user.rate
+
+emp1 = FullTimeEmployee()
+emp1.input("Fatima Salman", 101, 60000)
+
+emp2 = PartTimeEmployee()
+emp2.input("Areeza Iqbal", 102, 5, 80000)
+
+print(emp1.name, "Salary:", emp1.calculate_salary())
+print(emp2.name, "Salary:", emp2.calculate_salary())
