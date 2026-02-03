@@ -1,0 +1,30 @@
+class Student:
+    def input(student, name):
+        student.name = name
+        student.marks = 0
+
+    def set_marks(student, marks):
+        student.marks = marks
+
+    def get_marks(student):
+        return student.marks
+
+    def calculate_grade(student):
+        if student.marks >= 85:
+            return "A"
+        elif student.marks >= 70:
+            return "B"
+        elif student.marks >= 50:
+            return "C"
+        else:
+            return "Fail"
+
+st1 = Student()
+st1.input("Fatima Salman")
+st2 = Student()
+st2.input("Ariza Iqbal")
+st1.set_marks(78)
+st2.set_marks(45)
+
+print(st1.name, "Marks:", st1.get_marks(), "Grade:", st1.calculate_grade())
+print(st2.name, "Marks:", st2.get_marks(), "Grade:", st2.calculate_grade())
