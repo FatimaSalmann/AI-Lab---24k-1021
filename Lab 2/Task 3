@@ -1,0 +1,8 @@
+students = {
+    "Fatima": 85,
+    "Armeen": 92,
+    "Ariza": 82
+}
+for name, marks in students.items():
+    print("Name:", name)
+    print("Marks:", marks)
