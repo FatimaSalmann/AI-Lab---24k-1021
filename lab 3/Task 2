@@ -1,0 +1,23 @@
+import random
+students_present = False
+light_status = "OFF"
+
+for step in range(1,9):
+    students_present = random.choice([True, False])
+
+    if students_present and light_status == "OFF":
+        action = "Turn lights ON"
+        light_status = "ON"
+
+    elif not students_present and light_status == "ON":
+        action = "Turn lights OFF"
+        light_status = "OFF"
+
+    else:
+        action = "No action"
+
+    print("Step", step)
+    print("Students Present:", students_present)
+    print("Light Status:", light_status)
+    print("Action:", action)
+    
