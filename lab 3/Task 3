@@ -1,0 +1,9 @@
+subjects = ["AI", "Math", "Physics"]
+completed = []
+while len(completed) < len(subjects):
+    for sub in subjects:
+        if sub not in completed:
+            print("Studying", sub)
+            completed.append(sub)
+
+print("Goal Achieved. All subjects completed")
