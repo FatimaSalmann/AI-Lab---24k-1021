@@ -1,0 +1,36 @@
+rooms = {
+    'a':"safe",'b':"safe",'c':"fire",
+    'd':"safe",'e':"fire",'f':"safe",
+    'g':"safe",'h':"safe",'j':"fire"
+}
+
+path = ['a','b','c','d','e','f','g','h','j']
+
+def display_environment():
+    grid = ['a','b','c','d','e','f','g','h','j']
+    
+    for i in range(0,9,3):
+        for r in grid[i:i+3]:
+            if rooms[r] == "fire":
+                print("F", end=" ")
+            else:
+                print(".", end=" ")
+        print()
+    print()
+
+print("Initial Environment:")
+display_environment()
+
+for room in path:
+    print("Robot moved to room", room)
+
+    if rooms[room] == "fire":
+        print("Fire detected! Extinguishing fire...")
+        rooms[room] = "safe"
+    else:
+        print("Room is safe.")
+
+    display_environment()
+
+print("Final Environment Status:")
+display_environment()
