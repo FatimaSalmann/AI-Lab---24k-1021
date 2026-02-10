@@ -1,0 +1,9 @@
+states = ["Heavy Traffic", "Light Traffic"]
+
+for percept in states:
+    if percept == "Heavy Traffic":
+        action = "Extend Green Time"
+    else:
+        action = "Normal Green"
+
+    print("Percept:", percept, " =  Action:", action)
