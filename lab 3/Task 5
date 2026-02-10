@@ -1,0 +1,16 @@
+actions = ["Play", "Rest"]
+q_table = {"Play":0, "Rest":0}
+
+for step in range(1,11):
+    action = "Play" if q_table["Play"] >= q_table["Rest"] else "Rest"
+
+    if action == "Play":
+        reward = 5
+    else:
+        reward = 1
+
+    q_table[action] += reward
+
+    print("Step", step, ": Action", action, "Reward", reward)
+
+print("Q-table Updated")
