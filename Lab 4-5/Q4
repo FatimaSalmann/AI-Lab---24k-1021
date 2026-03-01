@@ -1,0 +1,26 @@
+import heapq
+graph = {
+    'S': {'A':4,'B':2},
+    'A': {'C':5,'D':10},
+    'B': {'E':3},
+    'C': {'G':4},
+    'D': {'G':1},
+    'E': {'D':4},
+    'G': {}
+}
+
+def ucs(start, goal):
+    queue = [(0,start)]
+    visited = {}
+
+    while queue:
+        cost,node = heapq.heappop(queue)
+        if node == goal:
+            return cost
+        if node not in visited:
+            visited[node] = cost
+            for neighbor in graph[node]:
+                total = cost + graph[node][neighbor]
+                heapq.heappush(queue,(total,neighbor))
+
+print("Minimum Cost:", ucs('S','G'))
