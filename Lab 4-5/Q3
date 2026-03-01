@@ -1,0 +1,9 @@
+def ids(start, goal, max_depth):
+    for depth in range(max_depth+1):
+        print("Checking depth:", depth)
+        result = dls(start, goal, depth)
+        if result:
+            return result
+    return None
+
+print("Final Path:", ids('A','G',5))
