@@ -1,0 +1,30 @@
+import heapq
+graph = {
+    'A':['B','C'],
+    'B':['D','E'],
+    'C':['F'],
+    'D':[],
+    'E':[],
+    'F':[]
+}
+
+heuristic = {
+    'A':6,'B':4,'C':5,
+    'D':1,'E':2,'F':0
+}
+
+def best_first(start, goal):
+    queue = [(heuristic[start], start)]
+    visited = []
+
+    while queue:
+        h,node = heapq.heappop(queue)
+        if node == goal:
+            return node
+        visited.append(node)
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                heapq.heappush(queue,(heuristic[neighbor],neighbor))
+
+print("Reached:", best_first('A','F'))
