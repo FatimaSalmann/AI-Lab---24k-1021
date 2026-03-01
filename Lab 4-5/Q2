@@ -1,0 +1,26 @@
+graph = {
+    'A':['B','C'],
+    'B':['D','E'],
+    'C':['F'],
+    'D':['G'],
+    'E':[],
+    'F':['H'],
+    'G':[],
+    'H':[]
+}
+
+def dls(node, goal, depth):
+    if depth < 0:
+        return None
+    
+    if node == goal:
+        return [node]
+
+    for neighbor in graph[node]:
+        result = dls(neighbor, goal, depth-1)
+        if result:
+            return [node] + result
+    return None
+
+print("Depth 2:", dls('A','H',2))
+print("Depth 3:", dls('A','H',3))
