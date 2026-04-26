@@ -1,15 +1,17 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import LogisticRegression
 
-df = pd.read_csv("housing.csv")
+df = pd.read_csv("emails.csv")
 
-X = df[["bedrooms","bathrooms","sqft","age"]]
-y = df["price"]
+X = df["text"]
+y = df["label"]
 
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+vectorizer = CountVectorizer()
+X_vec = vectorizer.fit_transform(X)
 
-model = LinearRegression()
-model.fit(X_train, y_train)
+model = LogisticRegression()
+model.fit(X_vec, y)
 
-print("Prediction:", model.predict([[3,2,1500,10]]))
+test = vectorizer.transform(["free money now"])
+print("Prediction:", model.predict(test))
