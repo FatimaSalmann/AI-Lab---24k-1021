@@ -1,0 +1,12 @@
+import pandas as pd
+from sklearn.svm import SVC
+
+df = pd.read_csv("customers.csv")
+
+X = df[["spending","age","visits","frequency"]]
+y = df["label"]
+
+model = SVC(kernel="linear")
+model.fit(X,y)
+
+print("Prediction:", model.predict([[6000,35,18,12]]))
