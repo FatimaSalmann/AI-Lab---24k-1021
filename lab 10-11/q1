@@ -1,0 +1,53 @@
+import pandas as pd
+
+# housing dataset
+housing = pd.DataFrame({
+    "bedrooms":[2,3,4,3,5],
+    "bathrooms":[1,2,3,2,4],
+    "sqft":[800,1200,2000,1500,2500],
+    "age":[20,15,5,10,2],
+    "neighborhood":["A","B","A","C","B"],
+    "price":[100000,150000,300000,200000,400000]
+})
+
+housing.to_csv("housing.csv", index=False)
+
+# email dataset
+emails = pd.DataFrame({
+    "text":[
+        "Win money now",
+        "Meeting tomorrow",
+        "Free prize click here",
+        "Project update attached"
+    ],
+    "label":[1,0,1,0]
+})
+
+emails.to_csv("emails.csv", index=False)
+
+# customer dataset
+customers = pd.DataFrame({
+    "spending":[2000,5000,3000,7000,1000],
+    "age":[25,40,30,50,22],
+    "visits":[10,20,15,25,5],
+    "frequency":[5,15,10,20,3],
+    "label":[0,1,0,1,0]
+})
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+df = pd.read_csv("housing.csv")
+
+X = df[["bedrooms","bathrooms","sqft","age"]]
+y = df["price"]
+
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+print("Prediction:", model.predict([[3,2,1500,10]]))
+customers.to_csv("customers.csv", index=False)
+
+print("Sample datasets created")
